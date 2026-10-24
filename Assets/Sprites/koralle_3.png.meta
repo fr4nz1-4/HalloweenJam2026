@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3518d318369734124a795aae66f5948a
+guid: f05036fba2f9f4944b5329c9ee5c0c9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6414230985322858064
-    second: Unbenanntes_Projekt-4 2_0
+      213: 738114678323969921
+    second: koralle_3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Unbenanntes_Projekt-4 2_0
+      name: koralle_3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 4096
-        height: 1084
+        x: 2199
+        y: 216
+        width: 454
+        height: 454
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 056097bd81de30950800000000000000
-      internalID: 6414230985322858064
+      spriteID: 18f7005a36f4e3a00800000000000000
+      internalID: 738114678323969921
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Unbenanntes_Projekt-4 2_0: 6414230985322858064
+      koralle_3_0: 738114678323969921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
