@@ -7,16 +7,19 @@ public class playerController : MonoBehaviour
     private Vector2 moveInput;
     private float speedX, speedY;
     private Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        // spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        spriteRenderer.flipX = rb.linearVelocityX < 0;
 
     }
 
