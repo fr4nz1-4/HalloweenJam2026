@@ -9,6 +9,7 @@ public class fishingRod : MonoBehaviour
     private Collider2D collider;
     private GameObject fish;
     private bool collisionHappened = false;
+    public GameManager gameManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,10 +27,11 @@ public class fishingRod : MonoBehaviour
             gameObject.transform.position += new Vector3(0, animationSpeed * Time.deltaTime, 0);
         }
 
-        // if (fish.transform.position.y >= 6)
-        // {
-        //     collisionHappened = false;
-        // }
+        if (fish != null && fish.transform.position.y >= 6)
+        {
+            gameManager.youLoose();
+            StartCoroutine(gameManager.waitAndChangeScene(5));
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

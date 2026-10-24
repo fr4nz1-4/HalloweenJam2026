@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 93e927c87a6684d3ba0203852efcfd64
+guid: 5e41491ffb55640deaef436019208390
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1699620235644865397
-    second: Unbenanntes_Projekt 18_0
+      213: 4363971633420013906
+    second: Unbenanntes_Projekt 21_0
   - first:
-      213: -8446605266682576063
-    second: Unbenanntes_Projekt 18_1
+      213: 2322641362378173969
+    second: Unbenanntes_Projekt 21_1
   - first:
-      213: -5189997580005280560
-    second: Unbenanntes_Projekt 18_2
-  - first:
-      213: 8544993337008296974
-    second: Unbenanntes_Projekt 18_3
-  - first:
-      213: -6747448209131566783
-    second: Unbenanntes_Projekt 18_4
+      213: -1449327958487427724
+    second: Unbenanntes_Projekt 21_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Unbenanntes_Projekt 18_0
+      name: Unbenanntes_Projekt 21_0
       rect:
         serializedVersion: 2
-        x: 223
-        y: 659
-        width: 247
-        height: 158
+        x: 647
+        y: 84
+        width: 2116
+        height: 1361
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,64 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b847251966cb968e0800000000000000
-      internalID: -1699620235644865397
+      spriteID: 25191eb4411ff8c30800000000000000
+      internalID: 4363971633420013906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unbenanntes_Projekt 18_1
+      name: Unbenanntes_Projekt 21_1
       rect:
         serializedVersion: 2
-        x: 447
-        y: 817
-        width: 15
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14301711341a7ca80800000000000000
-      internalID: -8446605266682576063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Unbenanntes_Projekt 18_2
-      rect:
-        serializedVersion: 2
-        x: 468
-        y: 776
-        width: 33
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0d4f5a2e2bc69f7b0800000000000000
-      internalID: -5189997580005280560
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Unbenanntes_Projekt 18_3
-      rect:
-        serializedVersion: 2
-        x: 470
-        y: 748
+        x: 1218
+        y: 53
         width: 37
-        height: 19
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e04957caa2ae59670800000000000000
-      internalID: 8544993337008296974
+      spriteID: 11e2e21630eab3020800000000000000
+      internalID: 2322641362378173969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unbenanntes_Projekt 18_4
+      name: Unbenanntes_Projekt 21_2
       rect:
         serializedVersion: 2
-        x: 487
-        y: 722
-        width: 42
-        height: 22
+        x: 2513
+        y: 55
+        width: 37
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1490e527a9f3c52a0800000000000000
-      internalID: -6747448209131566783
+      spriteID: 475905f86e3f2ebe0800000000000000
+      internalID: -1449327958487427724
       vertices: []
       indices: 
       edges: []
@@ -235,11 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Unbenanntes_Projekt 18_0: -1699620235644865397
-      Unbenanntes_Projekt 18_1: -8446605266682576063
-      Unbenanntes_Projekt 18_2: -5189997580005280560
-      Unbenanntes_Projekt 18_3: 8544993337008296974
-      Unbenanntes_Projekt 18_4: -6747448209131566783
+      Unbenanntes_Projekt 21_0: 4363971633420013906
+      Unbenanntes_Projekt 21_1: 2322641362378173969
+      Unbenanntes_Projekt 21_2: -1449327958487427724
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
