@@ -41,6 +41,4 @@ public class fishingRod : MonoBehaviour
         gameObject.GetComponent<Collider2D>().enabled = false;
         collisionHappened = true;
     }
-
-    
 }
