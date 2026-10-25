@@ -26,20 +26,32 @@ public class ClickableSceneLink : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            gameManager.player1.GetComponent<playerController>().enabled = false;
-            gameManager.player2.GetComponent<playerController>().enabled = false;
-            
-            pausePanel.SetActive(true);
-        }
+        if (Input.GetKeyDown(KeyCode.Escape) && !pausePanel.activeSelf && SceneManager.GetActiveScene().name == "main")
+            Pause();
     }
 
     public void GoBackToGame()
     {
         gameManager.player1.GetComponent<playerController>().enabled = true;
         gameManager.player2.GetComponent<playerController>().enabled = true;
-        
         pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
+    
+    void Pause()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0;
+        gameManager.player1.GetComponent<playerController>().enabled = false;
+        gameManager.player2.GetComponent<playerController>().enabled = false;
+        
+    }
+    
+    public IEnumerator waitAndChangeScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        ChangeScene("StartScene");
+
+    }
+
 }

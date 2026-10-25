@@ -10,6 +10,7 @@ public class fishingRod : MonoBehaviour
     private GameObject fish;
     private bool collisionHappened = false;
     public GameManager gameManager;
+    public AudioSource audioSource;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,17 +31,21 @@ public class fishingRod : MonoBehaviour
         if (fish != null && fish.transform.position.y >= 6)
         {
             gameManager.youLoose();
-            StartCoroutine(gameManager.waitAndChangeScene(5));
+            StartCoroutine(gameManager.sceneLink.waitAndChangeScene(5));
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("A collider has entered the fishing rod trigger");
-        fish = collision.gameObject;
-        fish.GetComponent<playerController>().enabled = false;
-        fish.GetComponent<Collider2D>().enabled = false;
-        gameObject.GetComponent<Collider2D>().enabled = false;
-        collisionHappened = true;
+        if (collision.gameObject.CompareTag("player"))
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+            Debug.Log("A collider has entered the fishing rod trigger");
+            fish = collision.gameObject;
+            fish.GetComponent<playerController>().enabled = false;
+            fish.GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            collisionHappened = true;
+        }
     }
 }

@@ -4,21 +4,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class playerController : MonoBehaviour
 {
     public float moveSpeed;
-    private Vector2 moveInput;
-    private float speedX, speedY;
-    private Rigidbody2D rb;
+    private Vector2 _moveInput;
+    private float _speedX, _speedY;
+    [FormerlySerializedAs("_rb")] public Rigidbody2D rb;
     public SpriteRenderer spriteRenderer;
     public int scoreValue;
     public GameManager GameManager;
-    private Color originalColor;
-    private float defaultSpeed;
-    private Color hitColor;
-    private Color foodColor;
-    private Color shockColor;
+    private Color _originalColor;
+    private float _defaultSpeed;
+    private Color _hitColor, _foodColor, _shockColor;
+    public AudioSource audioSource;
+    public AudioClip[] biteSounds;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -27,32 +29,27 @@ public class playerController : MonoBehaviour
         // spriteRenderer = GetComponent<SpriteRenderer>();
         scoreValue = 0;
         scoreValue = 0;
-        originalColor = spriteRenderer.color;
-        ColorUtility.TryParseHtmlString("#AB5757", out hitColor);
-        ColorUtility.TryParseHtmlString("#39FF47", out foodColor);
-        ColorUtility.TryParseHtmlString("#727272", out shockColor);
-        defaultSpeed = moveSpeed;
+        _originalColor = spriteRenderer.color;
+        ColorUtility.TryParseHtmlString("#AB5757", out _hitColor);
+        ColorUtility.TryParseHtmlString("#39FF47", out _foodColor);
+        ColorUtility.TryParseHtmlString("#727272", out _shockColor);
+        _defaultSpeed = moveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
         spriteRenderer.flipX = rb.linearVelocityX < 0;
-        
-        
     }
 
     void OnMove(InputValue value)
     {
-        moveInput = value.Get<Vector2>();
+        _moveInput = value.Get<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        // speedX = Input.GetAxis("Horizontal") * moveSpeed;
-        // speedY = Input.GetAxis("Vertical") * moveSpeed;
-        // rb.linearVelocity = new Vector2(speedX, speedY) * moveInput;
-        rb.linearVelocity = moveInput * moveSpeed;
+        rb.linearVelocity = _moveInput * moveSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -74,54 +71,62 @@ public class playerController : MonoBehaviour
                 StartCoroutine(shock(otherFish));
             }
             
-            scoreValue += otherFish.GetComponent<specialFish>().points;
             StartCoroutine(speed(otherFish));
+            scoreValue += otherFish.GetComponent<specialFish>().points;
+            spriteRenderer.transform.localScale += new Vector3(0.005f, 0.005f, 0.005f) * otherFish.GetComponent<specialFish>().points;
             Debug.Log(gameObject.name + "lost points: " + other.gameObject.GetComponent<specialFish>().points);
         }
     }
 
     IEnumerator food(GameObject otherFish)
     {
-        spriteRenderer.color = foodColor;
+        spriteRenderer.color = _foodColor;
         yield return new WaitForSeconds(0.05f);
-        otherFish.gameObject.SetActive(false);
+        eatFish(otherFish);
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = _originalColor;
     }
 
     IEnumerator hit(GameObject otherFish)
     {
-        spriteRenderer.color = hitColor;
+        spriteRenderer.color = _hitColor;
         yield return new WaitForSeconds(0.05f);
-        otherFish.gameObject.SetActive(false);
+        eatFish(otherFish);
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = _originalColor;
     }
 
     IEnumerator speed(GameObject otherFish)
     {
         moveSpeed += otherFish.GetComponent<specialFish>().speed;
-        yield return new WaitForSeconds(5f);
-        moveSpeed = defaultSpeed;
+        yield return new WaitForSeconds(otherFish.GetComponent<specialFish>().duration);
+        moveSpeed = _defaultSpeed;
     }
 
     IEnumerator shock(GameObject otherFish)
     {
-        spriteRenderer.color = shockColor;
+        spriteRenderer.color = _shockColor;
         yield return new WaitForSeconds(0.1f);
-        otherFish.gameObject.SetActive(false);
-        spriteRenderer.color = originalColor;
+        eatFish(otherFish);
+        spriteRenderer.color = _originalColor;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = shockColor;
+        spriteRenderer.color = _shockColor;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = _originalColor;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = shockColor;
+        spriteRenderer.color = _shockColor;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = _originalColor;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = shockColor;
+        spriteRenderer.color = _shockColor;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = _originalColor;
+    }
+
+    void eatFish(GameObject fish)
+    {
+        int randomIndex = Random.Range(0, biteSounds.Length);
+        audioSource.PlayOneShot(biteSounds[randomIndex]);
+        fish.gameObject.SetActive(false);
     }
 }

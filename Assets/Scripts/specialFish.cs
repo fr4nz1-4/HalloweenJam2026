@@ -1,19 +1,18 @@
+using System;
 using UnityEngine;
 
 public class specialFish : MonoBehaviour
 {
     public int points;
-
     public int speed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int duration;
 
-    // Update is called once per frame
-    void OnContact()
+    public AudioSource nyom;
+    private void OnBecameVisible()
     {
-        
+        if (nyom != null)
+        {
+            nyom.Play();
+        }
     }
 }
