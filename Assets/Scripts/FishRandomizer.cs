@@ -1,0 +1,33 @@
+using UnityEngine;
+
+public class FishRandomizer : MonoBehaviour
+{
+    public GameObject[] fishPositions;
+    public GameObject[] fishTypes;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        foreach (var t in fishPositions)
+        {
+            t.tag = "specialFish";
+            var rand = Random.Range(0, fishTypes.Length);
+            Instantiate(fishTypes[rand], t.transform.position, Quaternion.identity);
+            Debug.Log("instantiate fish: " + t.name);
+        }
+    }
+
+    
+    Component CopyComponent(Component original, GameObject destination)
+    {
+        System.Type type = original.GetType();
+        Component copy = destination.AddComponent(type);
+        // Copied fields can be restricted with BindingFlags
+        System.Reflection.FieldInfo[] fields = type.GetFields(); 
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            field.SetValue(copy, field.GetValue(original));
+            Debug.Log(field.GetValue(original));
+        }
+        return copy;
+    }
+}

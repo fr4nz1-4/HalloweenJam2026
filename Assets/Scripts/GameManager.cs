@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,12 +13,13 @@ public class GameManager : MonoBehaviour
     public playerController player2;
 
     public GameObject LoosePanel;
+    public AudioSource youGotBaitedSound;
     
-    public ClickableSceneLink SceneLink;
+    public ClickableSceneLink sceneLink;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        sceneLink.pausePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator waitAndChangeScene(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        SceneLink.ChangeScene("StartScene");
+        sceneLink.ChangeScene("StartScene");
 
     }
 }
